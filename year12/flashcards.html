@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flash Cards | Year 12 Biology</title>
+<meta name="description" content="Quick-fire recall flash cards covering all four Year 12 HSC Biology modules.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="site-title" href="../index.html">HSC Biology</a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../year11/index.html">Year 11</a></li>
+        <li><a href="index.html" aria-current="page">Year 12</a></li>
+        <li><a href="../reference/index.html">Reference</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content">
+  <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="index.html">Year 12</a> / <span aria-current="page">Flash Cards</span></p>
+
+  <h1>Flash Cards — Year 12</h1>
+  <p class="lede">Click or tap a card to flip it. Try to say the answer out loud <em>before</em> you flip — that's the part that actually builds recall, not just reading the answer.</p>
+
+  <div class="flashcard-grid" id="flashcard-grid"></div>
+
+  <div class="editor-note">
+    <strong>Note to self:</strong> This is a starter deck (one flashcard-worthy fact per major dot point). Add more by copying an object into the <code>cards</code> array near the bottom of this file — each needs a <code>module</code>, <code>q</code> and <code>a</code>.
+  </div>
+
+  <div class="module-nav-prev-next">
+    <a href="exam-tips.html">&larr; HSC Exam Preparation</a>
+    <span></span>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>Built for classroom use &middot; Syllabus content and outcomes &copy; NSW Education Standards Authority (NESA) &middot; Notes and questions on this site are original teaching material.</p>
+</footer>
+
+<script>
+  var cards = [
+    { module: "Module 5", q: "How many divisions occur in meiosis, and what happens in each?", a: "Two — meiosis I separates homologous chromosomes, meiosis II separates sister chromatids." },
+    { module: "Module 5", q: "Name the two enzymes central to DNA replication.", a: "Helicase (unwinds the double helix) and DNA polymerase (synthesises the new strand)." },
+    { module: "Module 5", q: "What two mechanisms during meiosis I create genetic variation?", a: "Crossing over and independent assortment." },
+    { module: "Module 5", q: "In a monohybrid cross Tt x tt, what is the phenotype ratio?", a: "1:1 — 50% tall, 50% short (assuming T is dominant to t)." },
+    { module: "Module 6", q: "Distinguish a gene mutation from a chromosomal mutation.", a: "A gene mutation changes the nucleotide sequence within one gene; a chromosomal mutation changes the structure or number of whole chromosomes." },
+    { module: "Module 6", q: "What is the key difference between selective breeding and genetic engineering?", a: "Selective breeding works only with existing variation within a species over many generations; genetic engineering directly alters DNA and can introduce genes from other species." },
+    { module: "Module 6", q: "Name three categories of mutagen.", a: "Physical (e.g. UV radiation), chemical, and biological (e.g. some viruses)." },
+    { module: "Module 7", q: "Name the three transmission modes for infectious disease.", a: "Direct, indirect, and vector transmission." },
+    { module: "Module 7", q: "Distinguish innate and adaptive immunity.", a: "Innate: non-specific, rapid, present from birth. Adaptive: specific, slower, develops over a lifetime, includes immunological memory." },
+    { module: "Module 7", q: "What are the four ways immunity can be acquired?", a: "Naturally active, naturally passive, artificially active (vaccination), artificially passive (antibody injection)." },
+    { module: "Module 7", q: "Why does antibiotic overuse increase resistance?", a: "It applies selection pressure — resistant bacteria survive and reproduce while susceptible ones are killed, so resistant strains become more common over generations." },
+    { module: "Module 8", q: "What is a negative feedback loop?", a: "A response that counteracts a change in a variable, returning it towards its set point (e.g. insulin lowering high blood glucose)." },
+    { module: "Module 8", q: "Name four physiological thermoregulation mechanisms in endotherms.", a: "Vasodilation/vasoconstriction, sweating/panting, shivering, and insulation (fur/fat)." },
+    { module: "Module 8", q: "Distinguish incidence and prevalence.", a: "Incidence: number of new cases in a time period. Prevalence: total existing cases at a point in time." },
+    { module: "Module 8", q: "Name three categories of cause of non-infectious disease.", a: "Genetic, environmental, and lifestyle factors." }
+  ];
+
+  var grid = document.getElementById("flashcard-grid");
+  cards.forEach(function (card, i) {
+    var btn = document.createElement("button");
+    btn.className = "flashcard";
+    btn.type = "button";
+    btn.setAttribute("aria-pressed", "false");
+    btn.setAttribute("aria-label", "Flash card " + (i + 1) + ": tap to reveal the answer");
+    btn.innerHTML =
+      '<span class="flashcard-inner">' +
+        '<span class="flashcard-face flashcard-front">' +
+          '<span class="flashcard-module-tag">' + card.module + '</span>' +
+          '<span class="flashcard-label">Question — tap to flip</span>' +
+          '<span>' + card.q + '</span>' +
+        '</span>' +
+        '<span class="flashcard-face flashcard-back">' +
+          '<span class="flashcard-label">Answer</span>' +
+          '<span>' + card.a + '</span>' +
+        '</span>' +
+      '</span>';
+    btn.addEventListener("click", function () {
+      var pressed = btn.getAttribute("aria-pressed") === "true";
+      btn.setAttribute("aria-pressed", pressed ? "false" : "true");
+    });
+    grid.appendChild(btn);
+  });
+</script>
+
+</body>
+</html>

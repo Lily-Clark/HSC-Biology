@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flash Cards | Year 11 Biology</title>
+<meta name="description" content="Quick-fire recall flash cards covering all four Year 11 Preliminary Biology modules.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="site-title" href="../index.html">HSC Biology</a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="index.html" aria-current="page">Year 11</a></li>
+        <li><a href="../year12/index.html">Year 12</a></li>
+        <li><a href="../reference/index.html">Reference</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content">
+  <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="index.html">Year 11</a> / <span aria-current="page">Flash Cards</span></p>
+
+  <h1>Flash Cards — Year 11</h1>
+  <p class="lede">Click or tap a card to flip it. Try to say the answer out loud <em>before</em> you flip — that's the part that actually builds recall, not just reading the answer.</p>
+
+  <div class="flashcard-grid" id="flashcard-grid"></div>
+
+  <div class="editor-note">
+    <strong>Note to self:</strong> This is a starter deck (one flashcard-worthy fact per major dot point). Add more by copying an object into the <code>cards</code> array near the bottom of this file — each needs a <code>module</code>, <code>q</code> and <code>a</code>.
+  </div>
+
+  <div class="module-nav-prev-next">
+    <a href="exam-tips.html">&larr; Preliminary Exam Preparation</a>
+    <span></span>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>Built for classroom use &middot; Syllabus content and outcomes &copy; NSW Education Standards Authority (NESA) &middot; Notes and questions on this site are original teaching material.</p>
+</footer>
+
+<script>
+  var cards = [
+    { module: "Module 1", q: "What are the two mechanisms of passive membrane transport?", a: "Simple diffusion and osmosis — both move substances down a concentration gradient without using ATP." },
+    { module: "Module 1", q: "What happens to surface area to volume ratio as a cell grows?", a: "It decreases, because volume increases faster than surface area — this limits how large a cell can grow before dividing." },
+    { module: "Module 1", q: "Name the three factors that affect enzyme activity.", a: "Temperature, pH, and substrate/enzyme concentration." },
+    { module: "Module 1", q: "What distinguishes a prokaryotic cell from a eukaryotic cell?", a: "Prokaryotic cells have no membrane-bound nucleus or organelles; eukaryotic cells do." },
+    { module: "Module 2", q: "Write the overall word equation for photosynthesis.", a: "Carbon dioxide + water + light energy \u2192 glucose + oxygen." },
+    { module: "Module 2", q: "What is the role of xylem?", a: "Transports water and dissolved minerals from roots to leaves, in one direction." },
+    { module: "Module 2", q: "What is the role of phloem?", a: "Transports the products of photosynthesis (mainly sucrose) from source to sink, in either direction." },
+    { module: "Module 2", q: "Name three features shared by efficient gas exchange surfaces.", a: "Large surface area, thin exchange surface, moist, and a good blood/transport supply." },
+    { module: "Module 3", q: "Give one example each of a structural, physiological and behavioural adaptation.", a: "Structural: thick fur (insulation). Physiological: concentrated urine (water conservation). Behavioural: migration." },
+    { module: "Module 3", q: "What are Darwin's four observations underpinning natural selection?", a: "Variation exists within populations; more offspring are produced than can survive; this creates competition; individuals with advantageous traits are more likely to survive and reproduce." },
+    { module: "Module 3", q: "Distinguish divergent and convergent evolution.", a: "Divergent: one ancestral species gives rise to different descendant species. Convergent: unrelated species independently evolve similar features due to similar pressures." },
+    { module: "Module 3", q: "What is a homologous structure, and what does it provide evidence for?", a: "A structure with similar underlying anatomy inherited from a common ancestor — evidence for divergent evolution." },
+    { module: "Module 4", q: "Roughly what percentage of energy transfers between trophic levels?", a: "About 10% — the rest is lost mainly as heat through respiration." },
+    { module: "Module 4", q: "Which sampling technique suits a mobile animal population?", a: "Mark-release-recapture." },
+    { module: "Module 4", q: "Which sampling technique shows how species distribution changes across a gradient?", a: "A transect." },
+    { module: "Module 4", q: "Why does Australia have such distinctive flora and fauna?", a: "Geological isolation after separating from Gondwana allowed marsupials and eucalypts to evolve with less competition from placental mammals and under unique soil/fire conditions." }
+  ];
+
+  var grid = document.getElementById("flashcard-grid");
+  cards.forEach(function (card, i) {
+    var btn = document.createElement("button");
+    btn.className = "flashcard";
+    btn.type = "button";
+    btn.setAttribute("aria-pressed", "false");
+    btn.setAttribute("aria-label", "Flash card " + (i + 1) + ": tap to reveal the answer");
+    btn.innerHTML =
+      '<span class="flashcard-inner">' +
+        '<span class="flashcard-face flashcard-front">' +
+          '<span class="flashcard-module-tag">' + card.module + '</span>' +
+          '<span class="flashcard-label">Question — tap to flip</span>' +
+          '<span>' + card.q + '</span>' +
+        '</span>' +
+        '<span class="flashcard-face flashcard-back">' +
+          '<span class="flashcard-label">Answer</span>' +
+          '<span>' + card.a + '</span>' +
+        '</span>' +
+      '</span>';
+    btn.addEventListener("click", function () {
+      var pressed = btn.getAttribute("aria-pressed") === "true";
+      btn.setAttribute("aria-pressed", pressed ? "false" : "true");
+    });
+    grid.appendChild(btn);
+  });
+</script>
+
+</body>
+</html>
