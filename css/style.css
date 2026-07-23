@@ -1,0 +1,320 @@
+/* =========================================================
+   HSC Biology Course Site — stylesheet
+   Palette:  ink #1F2A24 | moss #3C5B45 | field #7C9473
+             parchment #F6F3EA | clay #B5652D | line #D9D2BF
+   Type:     "Fraunces" (display/serif headings) + "Source Sans 3" (body)
+   ========================================================= */
+
+:root {
+  --ink: #1f2a24;
+  --moss: #3c5b45;
+  --moss-dark: #2a4232;
+  --field: #7c9473;
+  --parchment: #f6f3ea;
+  --paper: #fffdf8;
+  --clay: #b5652d;
+  --clay-dark: #8f4e20;
+  --line: #d9d2bf;
+  --focus: #1f2a24;
+
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Source Sans 3", "Segoe UI", Arial, sans-serif;
+
+  --max-width: 78ch;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--parchment);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+/* Skip link for keyboard/screen-reader users */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.75rem 1.25rem;
+  z-index: 100;
+  border-radius: 0 0 6px 0;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+/* Visible focus outline everywhere, no exceptions */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* ---------- Layout shell ---------- */
+.site-header {
+  background: var(--moss-dark);
+  color: var(--paper);
+  border-bottom: 4px solid var(--clay);
+}
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.site-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--paper);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+.site-title:hover { text-decoration: underline; }
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+.main-nav a {
+  color: var(--paper);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.25rem 0.1rem;
+  border-bottom: 2px solid transparent;
+}
+.main-nav a:hover,
+.main-nav a[aria-current="page"] {
+  border-bottom-color: var(--clay);
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+.site-footer {
+  background: var(--ink);
+  color: var(--parchment);
+  text-align: center;
+  padding: 2rem 1.5rem;
+  font-size: 0.9rem;
+}
+.site-footer a { color: #cfe0c9; }
+
+/* ---------- Breadcrumb ---------- */
+.breadcrumb {
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  color: var(--moss-dark);
+}
+.breadcrumb a { color: var(--moss-dark); }
+.breadcrumb span[aria-current] { color: var(--ink); font-weight: 600; }
+
+/* ---------- Typography ---------- */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  line-height: 1.2;
+}
+h1 { font-size: clamp(1.9rem, 3.5vw, 2.6rem); margin-top: 0; }
+h2 {
+  font-size: 1.5rem;
+  margin-top: 2.5rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--line);
+}
+h3 { font-size: 1.2rem; margin-top: 1.75rem; color: var(--moss-dark); }
+
+p, li { max-width: var(--max-width); }
+
+a { color: var(--clay-dark); }
+a:hover { color: var(--clay); }
+
+.lede {
+  font-size: 1.2rem;
+  color: var(--moss-dark);
+  max-width: var(--max-width);
+}
+
+/* ---------- Cards / grids ---------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+.card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--moss);
+  border-radius: 6px;
+  padding: 1.25rem 1.4rem;
+  text-decoration: none;
+  color: var(--ink);
+  display: block;
+}
+.card:hover, .card:focus-visible {
+  border-left-color: var(--clay);
+}
+.card .module-number {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--moss);
+  display: block;
+  margin-bottom: 0.35rem;
+}
+.card h3 { margin-top: 0; color: var(--ink); }
+.card p { margin-bottom: 0; color: #40453e; font-size: 0.95rem; }
+
+/* ---------- Syllabus dot points ---------- */
+.syllabus-box {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem;
+  margin: 1rem 0 2rem;
+}
+.syllabus-box h3 { margin-top: 0; }
+.inquiry-question {
+  font-style: italic;
+  color: var(--moss-dark);
+  border-left: 4px solid var(--field);
+  padding-left: 0.9rem;
+  margin: 0.5rem 0 1rem;
+}
+.dot-points { padding-left: 1.3rem; }
+.dot-points li { margin-bottom: 0.5rem; }
+
+/* ---------- Teacher-use table (Outcome / Adjustments / Register) ---------- */
+.teacher-table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+table.teacher-table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 640px;
+  font-size: 0.95rem;
+}
+table.teacher-table caption {
+  text-align: left;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--moss-dark);
+}
+table.teacher-table th, table.teacher-table td {
+  border: 1px solid var(--line);
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+table.teacher-table thead th {
+  background: var(--moss);
+  color: var(--paper);
+}
+table.teacher-table tbody tr:nth-child(even) { background: #f0ecdf; }
+
+/* ---------- Practice questions ---------- */
+.question-list { list-style: none; padding: 0; margin: 1rem 0; }
+.question {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 1.1rem 1.3rem;
+  margin-bottom: 1rem;
+}
+.question .marks {
+  float: right;
+  font-size: 0.85rem;
+  color: var(--moss-dark);
+  font-weight: 600;
+  background: #e7e2d2;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+}
+.question p:first-child { margin-top: 0; }
+
+details.answer {
+  margin-top: 0.75rem;
+  border-top: 1px dashed var(--line);
+  padding-top: 0.6rem;
+}
+details.answer summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--moss-dark);
+}
+details.answer summary:hover { color: var(--clay-dark); }
+
+/* ---------- Resource links ---------- */
+.resource-list { list-style: none; padding: 0; }
+.resource-list li {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.resource-list li:last-child { border-bottom: none; }
+.resource-list .tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--field);
+  color: var(--ink);
+  padding: 0.1rem 0.5rem;
+  border-radius: 4px;
+  margin-right: 0.5rem;
+}
+
+/* ---------- Notes-to-self callout for the teacher ---------- */
+.editor-note {
+  background: #fbf1e0;
+  border: 1px dashed var(--clay);
+  border-radius: 6px;
+  padding: 0.9rem 1.2rem;
+  margin: 1.5rem 0;
+  font-size: 0.92rem;
+}
+.editor-note strong { color: var(--clay-dark); }
+
+/* ---------- Utility ---------- */
+.module-nav-prev-next {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--line);
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.module-nav-prev-next a {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+@media (max-width: 640px) {
+  .header-inner { flex-direction: column; align-items: flex-start; }
+  .question .marks { float: none; display: inline-block; margin-bottom: 0.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
